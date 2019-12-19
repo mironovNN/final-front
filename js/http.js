@@ -1,4 +1,5 @@
 export default class Api {
+
     constructor(baseUrl) {
         this._baseUrl = baseUrl;
     }

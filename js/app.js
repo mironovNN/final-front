@@ -116,7 +116,6 @@ class Context {
   }
 }
 
-
 const translator = new Translator();
 const router = new Router();
 

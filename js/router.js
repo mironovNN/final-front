@@ -1,4 +1,5 @@
 export default class Router {
+
     constructor() {
         this._mappings = new Map();
         this._callback = null;
@@ -42,7 +43,6 @@ export default class Router {
             if (typeof this._callback !== 'function') {
                 return;
             }
-            // window.history.back();
             this._callback(document.location.pathname);
         };
     }

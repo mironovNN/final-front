@@ -7,34 +7,30 @@ export default class UserDetails {
     init() {
         this._rootEl.innerHTML = `
      <div class="container">
-    <nav class="navbar navbar-expand-lg bg-info navbar-dark">
-      <a class="navbar-brand" href="#">SocialNetwork</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar-supported-content">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" data-id="menu-me" href="/details">Моя страница</a>
-          </li>
-          <li class="nav-item active">
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" data-id="menu-main" href="/posts">Новости</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" data-id="menu-users" href="/users">Пользователи</a>
-          </li>
-          <form data-id="logout-form" class="form-inline my-2 my-lg-0">
+      <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+          <a class="navbar-brand" href="/">SocialNetwork</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-supported-content">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" data-id="menu-main" href="/posts">Новости</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" data-id="menu-users" href="/users">Пользователи</a>
+              </li>  
+              <form data-id="search-form" class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" data-id="search-input">
+              <button type="submit" class="btn btn-info">Поиск</button>
+            </form>      
+            </ul>
+            <form data-id="logout-form" class="form-inline my-2 my-lg-0">
+               <a class="nav-link" data-id="menu-me" href="/details"><font color="#fff">Моя страница</font></a>          
               <button type="submit" class="btn btn-info">Выйти</button>
             </form>
-        </ul>
-        <form data-id="search-form" class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
-          <button type="submit" class="btn btn-info">Поиск</button>
-        </form>
-      </div>
-    </nav>
+          </div>
+        </nav>
     <br>
         <div class="row">
         <div class="col" data-id="users-container"></div>
@@ -100,7 +96,7 @@ export default class UserDetails {
     }
 
     loadNewList(user) {
-        if (!user) {
+        if (user.length==0) {
             return;
         }
         const userEl = document.createElement('div');
@@ -110,6 +106,7 @@ export default class UserDetails {
               <h5 class="card-title" style="text-align: center;">${user.name}</h5>
               <h6 class="card-title" style="text-align: center;">${user.username}</h6>
               <h6 class="card-title" style="text-align: center;">${user.email}</h6>
+              <img src="${this._context.mediaUrl()}/${user.photo}" class="img-responsive mx-auto d-block" style="max-width: 30%;" alt="...">
             </div>
           </div>
       `;

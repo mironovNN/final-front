@@ -1,4 +1,5 @@
 export default class Translator {
+
     constructor() {
         this.init();
     }
@@ -30,7 +31,6 @@ const translations = {
         'error.not_found': "Не найдено",
         'error.validation': "Введены неправильные данные",
         'error.unauthorized': "Ошибка авторизации",
-
 
     },
     en: {

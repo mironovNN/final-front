@@ -2,14 +2,13 @@ export default class RegisterPage {
     constructor(context) {
         this._context = context;
         this._rootEl = context.rootEl();
-
     }
 
     init() {
         this._rootEl.innerHTML = `
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-info navbar-dark">
-              <a class="navbar-brand" href="#">SocialNetwork</a>
+              <a class="navbar-brand" href="/">SocialNetwork</a>
             </nav>
         </div>
           <div class="py-5">

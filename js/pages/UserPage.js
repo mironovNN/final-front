@@ -8,33 +8,29 @@ export default class UserPage {
         this._rootEl.innerHTML = `
      <div class="container">
     <nav class="navbar navbar-expand-lg bg-info navbar-dark">
-      <a class="navbar-brand" href="#">SocialNetwork</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar-supported-content">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" data-id="menu-me" href="/details">Моя страница</a>
-          </li>
-          <li class="nav-item active">
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" data-id="menu-main" href="/posts">Новости</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" data-id="menu-users" href="/users">Пользователи</a>
-          </li>
-          <form data-id="logout-form" class="form-inline my-2 my-lg-0">             
-              <button type="submit" class="btn btn-info">Выйти</button>
-            </form>
-        </ul>
-        <form data-id="search-form" class="form-inline my-2 my-lg-0">
+          <a class="navbar-brand" href="/">SocialNetwork</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-supported-content">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" data-id="menu-main" href="/posts">Новости</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" data-id="menu-users" href="/users">Пользователи</a>
+              </li>  
+              <form data-id="search-form" class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" data-id="search-input">
               <button type="submit" class="btn btn-info">Поиск</button>
-        </form>
-      </div>
-    </nav>
+            </form>      
+            </ul>
+            <form data-id="logout-form" class="form-inline my-2 my-lg-0">
+               <a class="nav-link" data-id="menu-me" href="/details"><font color="#fff">Моя страница</font></a>          
+              <button type="submit" class="btn btn-info">Выйти</button>
+            </form>
+          </div>
+        </nav>
     <br>
         <div class="row">
         <div class="col" data-id="users-container"></div>
@@ -119,7 +115,12 @@ export default class UserPage {
     }
 
     loadNewList(users) {
-        if (!users) {
+        if (users.length==0) {
+            const userEl = document.createElement('div');
+            userEl.innerHTML=`
+            <h6 style="text-align: center">Ничего не найдено!</h6>
+            `;
+            this._usersContainerEl.appendChild(userEl);
             return;
         }
         for (const user of users) {
@@ -127,6 +128,7 @@ export default class UserPage {
             userEl.innerHTML = `
           <div class="card mb-3">
            <div class="row no-gutters">
+           <img src="${this._context.mediaUrl()}/${user.photo}" style="max-width: 15%;" class="img-fluid" alt="...">
            <div class="card-body">
             <p class="card-text">Имя: ${user.name}</p>
             <p class="card-text">Логин: ${user.username}</p>
@@ -137,7 +139,6 @@ export default class UserPage {
             this._usersContainerEl.appendChild(userEl);
         }
     }
-
 
     showError(error) {
         const data = JSON.parse(error);
