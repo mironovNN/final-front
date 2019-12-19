@@ -2,6 +2,10 @@ html, body, #root {
     height: 100%;
     background-color: #ecebf0;
 }
+.fixed-top{
+    width: 82%;
+    margin: auto;
+}
 .messages {
     overflow-y: scroll;
 }

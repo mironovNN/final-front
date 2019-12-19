@@ -10,7 +10,7 @@ export default class MainPage {
   init() {
     this._rootEl.innerHTML = `
       <div class="container">
-        <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+        <nav class="navbar navbar-expand-lg bg-info navbar-dark fixed-top">
           <a class="navbar-brand" href="/">SocialNetwork</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content">
             <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,7 @@ export default class MainPage {
           </div>
         </nav>
         <br>
+        <div class="py-5"></div>
         <div class="row">
           <div class="col">
             <div class="card">
@@ -245,7 +246,7 @@ export default class MainPage {
           <br/>
             <p class="card-text">${post.content}</p>   
             <br/> 
-            <p class="card-text">Понравилось: ${post.likes}</p>
+            <p class="card-text">♡ ${post.likes}</p>
             ${postMedia}
           </div>
           <div class="card-footer">

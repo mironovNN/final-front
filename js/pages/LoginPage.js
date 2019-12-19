@@ -3,7 +3,6 @@ export default class LoginPage {
         this._context = context;
         this._rootEl = context.rootEl();
     }
-
     init() {
         this._rootEl.innerHTML = `
         <div class="container">
