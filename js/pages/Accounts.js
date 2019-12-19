@@ -1,4 +1,4 @@
-export default class UserDetails {
+export default class Accounts {
     constructor(context) {
         this._context = context;
         this._rootEl = context.rootEl();

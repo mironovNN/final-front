@@ -5,7 +5,7 @@ import MainPage from './pages/MainPage.js'
 import LoginPage from './pages/LoginPage.js'
 import UserPage from './pages/UserPage.js'
 import RegisterPage from './pages/RegisterPage.js'
-import UserDetails from './pages/UserDetails.js'
+import Accounts from './pages/Accounts.js'
 
 class Context {
   constructor(rootEl, api, router, translator, mediaUrl, websocketUrl) {
@@ -123,9 +123,9 @@ router.register('/', LoginPage);
 router.register('/register', RegisterPage);
 router.register('/posts', MainPage);
 router.register('/users', UserPage);
-router.register('/details', UserDetails);
+router.register('/details', Accounts);
 const [backendUrl, websocketUrl] = ['localhost', '127.0.0.1'].includes(window.location.hostname) ?
-    ['http://localhost:8080', 'ws://localhost:8080/ws'] : ['https://applicationfinalback.herokuapp.com//', 'wss://applicationfinalback.herokuapp.com//ws'];
+    ['http://localhost:9999', 'ws://localhost:9999/ws'] : ['https://applicationfinalback.herokuapp.com//', 'wss://applicationfinalback.herokuapp.com//ws'];
 
 const api = new Api(`${backendUrl}/api`);
-new Context(document.getElementById('root'), api, router, translator, backendUrl, websocketUrl);
+new Context(document.getElementById('root'), api, router, translator, '${backendUrl}/api/files/entity', websocketUrl);

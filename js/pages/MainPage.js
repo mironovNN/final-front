@@ -265,6 +265,7 @@ export default class MainPage {
       `;
             postEl.querySelector('[data-action=like]').addEventListener('click', evt => {
                 evt.preventDefault();
+                evt.preventDefault();
                 this._context.post(`/posts/${post.id}/likes`, null, {},
                     () => {
                         this.clean();
